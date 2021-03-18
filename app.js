@@ -4,7 +4,7 @@ const app=express();
 const bodyparser=require('body-parser');
 const sendQuery = require('./database.js');
 var port=3000;
-app.use(bodyparser.json());
+app.use(bodyparser.json()); //parsing application/json
 app.use(bodyparser.urlencoded({extended: false}));
 app.get('/',function(req,res){
     res.send("Hi");
