@@ -17,7 +17,7 @@ connection.connect(function(err){
 
 module.exports = function sendQuery(q){
     connection.query(q,function(err,result,fields){
-        if(err) console(err);
+        if(err)console(err);
         else console.log(result);
     });
 }
