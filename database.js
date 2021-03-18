@@ -2,18 +2,22 @@ const mysql = require('mysql');
 
 var db_info = {
     host: 'localhost',
-    user: 'root',
     port: '3306',
+    user: 'root',
     password: 'tiger',
-    database: 'testdb'
+    database: 'world'
 }
 //make connection
-exports.connection = mysql.createConnection(db_info);
+var connection = mysql.createConnection(db_info);
 //connect
-exports.conn = function (connection){
-    connection.connect(function(err){
+connection.connect(function(err){
         if(err) console(err);
         else console.log('DB is connected successfully!');
+});
+
+module.exports = function sendQuery(q){
+    connection.query(q,function(err,result,fields){
+        if(err) console(err);
+        else console.log(result);
     });
 }
-
